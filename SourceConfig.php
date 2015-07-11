@@ -1,22 +1,35 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of SourceConfig
+ * ძირითადი საკონფიგურაციო პარამეტრები
  *
- * @author nika
+ * @author Niko Peikrishvili
  */
 class SourceConfig extends SourceFields
 {
+    /**
+     * ვალუტის კოდის აღმნიშვნელი ინდექსი
+     * RSS მონაცემებთან მუშაობის შემთხვევაში
+     */
     const currencyId = 0;
+    /**
+     * ვალუტის კურსის აღმნიშვნელი ინდექსი
+     * RSS მონაცემებთან მუშაობის შემთხვევაში
+     */
     const CurrencyRate = 2;
+    /**
+     * WSDL ფაილის მისამართი
+     */
     const soapSource = 'http://nbg.gov.ge/currency.wsdl';
+    /**
+     * RSS ფაილის მისამართი
+     */
     const rssSource = 'http://www.nbg.ge/rss.php';
+    /**
+     * რამდენზე უნდა გამრავლდეს კურსი
+     */
     const items = 1000;
+    /**
+     * დამრგვალება
+     */
     const round = 6;
 }

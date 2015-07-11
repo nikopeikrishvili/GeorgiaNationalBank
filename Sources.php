@@ -1,6 +1,8 @@
 <?php
 /**
- * This class is used for enum of sources
+ * წყაროების სია უნდა შეესაბამებოდეს
+ * იგივე დირექტორიაში მასივის სახელს და უნდა იყოს SourceInterface
+ * ის იმპლემენტაცია
  *
  * @author Niko Peikrishvili
  */

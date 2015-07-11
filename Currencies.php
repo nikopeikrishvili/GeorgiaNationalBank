@@ -1,9 +1,9 @@
 <?php
 
 /**
- * List of available currencies
+ * შესაძლო ვალუტების სია
  *
- * @author nika
+ * @author Niko Peikrishvili
  */
 class Currencies
 {

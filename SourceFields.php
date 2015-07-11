@@ -1,18 +1,32 @@
 <?php
 
 /**
- * Description of SourceFields
  *
- * @author nika
+ * @author Niko Peikrishvili
  */
 class SourceFields
 {
 
+    /**
+     *
+     * @var String - მონაცემთა წყარო 
+     */
     protected $sourceType;
+    /**
+     *
+     * @var type 
+     */
     protected $source;
+    /**
+     *
+     * @var array - მონაცემები 
+     */
     protected $data;
-    
-    protected  $currencyQuantity = array(
+    /**
+     *
+     * @var int -  ერთეულები ეროვნულ ბანკში
+     */
+    protected $currencyQuantity = array(
         "GEL" => 1,
         "AED" => 10,
         "AMD" => 1000,

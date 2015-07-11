@@ -1,22 +1,30 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of Money
  *
- * @author popcorn
+ * @author Niko Peikrishvili
  */
 class Money
 {
 
+    /**
+     *
+     * @var String - რომელი ვალუტიდან ხდება კონვერტაცია 
+     */
     public $fromCurrency = '';
+    /**
+     *
+     * @var String - რომელ ვალუტაში ხდება კონვერტაცია
+     */
     public $toCurrency = '';
-    public $amount = 0;
-    public $generatedAmount = 0;
+    /**
+     *
+     * @var float - კონვერტირებადი თანხა 
+     */
+    public $amount = 0.0;
+    /**
+     *
+     * @var float - რეზულტატი 
+     */
+    public $generatedAmount = 0.0;
 
 }
