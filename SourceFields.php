@@ -13,6 +13,7 @@ class SourceFields
     protected $data;
     
     protected  $currencyQuantity = array(
+        "GEL" => 1,
         "AED" => 10,
         "AMD" => 1000,
         "AUD" => 1,

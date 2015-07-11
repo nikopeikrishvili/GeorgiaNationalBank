@@ -27,7 +27,7 @@ class RssSource extends SourceConfig implements SourceInterface
             $i = (array) $item->td;
             $rates[$i[self::currencyId]] = $i[self::CurrencyRate];
         }
- 
+        $rates[Currencies::_GEL]=1;
         $this->data = $rates;
     }
 

@@ -8,6 +8,7 @@
 class Currencies
 {
 
+    CONST _GEL = 'GEL';
     CONST _AED = 'AED';
     CONST _AMD = 'AMD';
     CONST _AUD = 'AUD';
