@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Description of SoapSource
  *
@@ -6,7 +7,9 @@
  */
 class SoapSource extends SourceConfig implements SourceInterface
 {
+
     use Calculation;
+
     public function __construct()
     {
 
@@ -14,17 +17,22 @@ class SoapSource extends SourceConfig implements SourceInterface
         ini_set('default_socket_timeout', 5);
         $this->source = new SoapClient(self::soapSource, array("trace" => 1, "connection_timeout" => 5, "exception" => 1, array('encoding' => 'UTF-8')));
         ini_set('default_socket_timeout', $timeout);
-        $this->source->getCurrency(Currencies::_USD);
-    }
-
-    public function getCrossRate($fromCurrency, $toCurrency)
-    {
-        
+        // შემოწმება, WSDL შეიძლება მოდიოდეს სწორედ მარა თვითონ სერვისი არ მუშაობდეს
+        $rate = $this->source->GetCurrencyRate(Currencies::_USD);
+        $this->data[Currencies::_USD] = $rate;
     }
 
     public function getRate($currency)
     {
-        return $this->source->getCurrency($currency);
+        if (is_array($this->data) && key_exists($currency, $this->data))
+        {
+            return $this->data[$currency];
+        } else
+        {
+            $rate = floatval($this->source->getCurrency($currency));
+            $this->data[$currency] = $rate;
+            return $rate;
+        }
     }
 
 //put your code here
