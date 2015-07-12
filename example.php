@@ -13,13 +13,15 @@ require 'NBRate.php';
 
 $data = NBRate::getDataSource();
 
-//$rate = $data->getRate(Currencies::_USD);
-//echo $rate."\n";
-//$crossRate = $data->getCrossRate(Currencies::_RUB, Currencies::_USD);
-//echo $crossRate."\n";
+$rate = $data->getRate(Currencies::_USD);
+echo $rate."\n";
+
+$crossRate = $data->getCrossRate(Currencies::_RUB, Currencies::_USD);
+echo $crossRate."\n";
+
 $money = new Money();
 $money->fromCurrency = Currencies::_GEL;
 $money->toCurrency = Currencies::_USD;
 $money->amount = 1;
 
-print_r($data->calculateAmount($money));
+$amount = $data->calculateAmount($money);
