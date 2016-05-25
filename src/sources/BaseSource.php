@@ -1,12 +1,21 @@
 <?php
-/**
- * traint ის დანიშნულებაა საერთო ფუნქციონალის
- * ერთ ადგილას მოთავსება
- */
-trait Calculation
-{
+namespace CBGeo\sources;
 
-    public function getCrossRate($fromCurrency, $toCurrency)
+/**
+ * Description of BaseSource
+ *
+ * @author Niko Peikrishvili
+ */
+abstract class BaseSource extends \CBGeo\config\SourceConfig
+{
+   
+    /**
+     * ვალუტის კოდი
+     * @param String $currency
+     */
+    public abstract function getRate($currency);
+   
+    public final function getCrossRate($fromCurrency, $toCurrency)
     {
 
         $gel = self::items * ($this->getRate($fromCurrency) / $this->currencyQuantity[$fromCurrency]);
@@ -14,11 +23,11 @@ trait Calculation
         return round($foreign / self::items, self::round);
     }
 
-    public function calculateAmount(Money $amount)
+    public final function calculateAmount(\CBGeo\Money $amount)
     {
         echo $this->getCrossRate($amount->fromCurrency, $amount->toCurrency)."\n";
         $amount->generatedAmount = $amount->amount * $this->getCrossRate($amount->fromCurrency, $amount->toCurrency);
         return $amount;
     }
-
+    
 }

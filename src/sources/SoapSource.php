@@ -1,25 +1,26 @@
 <?php
+namespace CBGeo\sources;
 
 /**
  * Description of SoapSource
  *
  * @author Niko Peikrishvili
  */
-class SoapSource extends SourceConfig implements SourceInterface
+class SoapSource extends BaseSource
 {
 
-    use Calculation;
+
 
     public function __construct()
     {
 
         $timeout = ini_get('default_socket_timeout');
         ini_set('default_socket_timeout', 5);
-        $this->source = new SoapClient(self::soapSource, array("trace" => 1, "connection_timeout" => 5, "exception" => 1, array('encoding' => 'UTF-8')));
+        $this->source = new \SoapClient(self::soapSource, array("trace" => 1, "connection_timeout" => 5, "exception" => 1, array('encoding' => 'UTF-8')));
         ini_set('default_socket_timeout', $timeout);
         // შემოწმება, WSDL შეიძლება მოდიოდეს სწორედ მარა თვითონ სერვისი არ მუშაობდეს
-        $rate = $this->source->GetCurrencyRate(Currencies::_USD);
-        $this->data[Currencies::_USD] = $rate;
+        $rate = $this->source->GetCurrencyRate(\CBGeo\Currencies::_USD);
+        $this->data[\CBGeo\Currencies::_USD] = $rate;
     }
 
     public function getRate($currency)
@@ -35,5 +36,5 @@ class SoapSource extends SourceConfig implements SourceInterface
         }
     }
 
-//put your code here
+
 }

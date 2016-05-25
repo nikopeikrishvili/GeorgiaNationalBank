@@ -1,4 +1,6 @@
 <?php
+namespace CBGeo\config;
+
 /**
  * წყაროების სია უნდა შეესაბამებოდეს
  * იგივე დირექტორიაში მასივის სახელს და უნდა იყოს SourceInterface
@@ -9,12 +11,12 @@
 abstract class Sources
 {
 
-    const SOAP = 'SoapSource';
-    const RSS = 'RssSource';
+    const SOAP = '\CBGeo\sources\SoapSource';
+    const RSS = '\CBGeo\sources\RssSource';
     
     static function getAllSources()
     {
-        $oClass = new ReflectionClass(__CLASS__);
+        $oClass = new \ReflectionClass(__CLASS__);
         return $oClass->getConstants();
     }
 

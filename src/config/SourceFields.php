@@ -1,5 +1,5 @@
 <?php
-
+namespace CBGeo\config;
 /**
  *
  * @author Niko Peikrishvili

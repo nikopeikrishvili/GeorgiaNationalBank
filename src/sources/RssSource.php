@@ -1,12 +1,13 @@
 <?php
+namespace CBGeo\sources;
 /**
  * Description of RssSource
  *
  * @author Niko Peikrishvili
  */
-class RssSource extends SourceConfig implements SourceInterface
+class RssSource extends BaseSource
 {
-    use Calculation;
+
     public function __construct()
     {
         $garbage = array('<![CDATA[', ']]>', '<img  src="https://www.nbg.gov.ge/images/green.gif">', '<img  src="https://www.nbg.gov.ge/images/red.gif">');
@@ -20,7 +21,7 @@ class RssSource extends SourceConfig implements SourceInterface
             $i = (array) $item->td;
             $rates[$i[self::currencyId]] = $i[self::CurrencyRate];
         }
-        $rates[Currencies::_GEL]=1;
+        $rates[\CBGeo\Currencies::_GEL]=1;
         $this->data = $rates;
     }
 

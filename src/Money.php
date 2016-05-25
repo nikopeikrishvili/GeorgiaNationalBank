@@ -1,4 +1,5 @@
 <?php
+namespace CBGeo;
 /**
  *
  * @author Niko Peikrishvili
@@ -10,12 +11,12 @@ class Money
      *
      * @var String - რომელი ვალუტიდან ხდება კონვერტაცია 
      */
-    public $fromCurrency = '';
+    public $fromCurrency;
     /**
      *
      * @var String - რომელ ვალუტაში ხდება კონვერტაცია
      */
-    public $toCurrency = '';
+    public $toCurrency;
     /**
      *
      * @var float - კონვერტირებადი თანხა 
