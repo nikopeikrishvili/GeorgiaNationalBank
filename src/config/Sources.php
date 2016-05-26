@@ -1,5 +1,5 @@
 <?php
-namespace CBGeo\config;
+namespace GeorgiaNationalBank\config;
 
 /**
  * წყაროების სია უნდა შეესაბამებოდეს
@@ -11,8 +11,8 @@ namespace CBGeo\config;
 abstract class Sources
 {
 
-    const SOAP = '\CBGeo\sources\SoapSource';
-    const RSS = '\CBGeo\sources\RssSource';
+    const SOAP = '\GeorgiaNationalBank\sources\SoapSource';
+    const RSS = '\GeorgiaNationalBank\sources\RssSource';
     
     static function getAllSources()
     {

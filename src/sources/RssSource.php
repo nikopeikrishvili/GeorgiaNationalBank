@@ -1,5 +1,5 @@
 <?php
-namespace CBGeo\sources;
+namespace GeorgiaNationalBank\sources;
 /**
  * Description of RssSource
  *
@@ -21,7 +21,7 @@ class RssSource extends BaseSource
             $i = (array) $item->td;
             $rates[$i[self::currencyId]] = $i[self::CurrencyRate];
         }
-        $rates[\CBGeo\Currencies::_GEL]=1;
+        $rates[\GeorgiaNationalBank\Currencies::_GEL]=1;
         $this->data = $rates;
     }
 

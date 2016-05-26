@@ -1,5 +1,5 @@
 <?php
-namespace CBGeo;
+namespace GeorgiaNationalBank;
 /**
  *
  * @author Niko Peikrishvili

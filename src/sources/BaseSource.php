@@ -1,12 +1,12 @@
 <?php
-namespace CBGeo\sources;
+namespace GeorgiaNationalBank\sources;
 
 /**
  * Description of BaseSource
  *
  * @author Niko Peikrishvili
  */
-abstract class BaseSource extends \CBGeo\config\SourceConfig
+abstract class BaseSource extends \GeorgiaNationalBank\config\SourceConfig
 {
    
     /**
@@ -23,7 +23,7 @@ abstract class BaseSource extends \CBGeo\config\SourceConfig
         return round($foreign / self::items, self::round);
     }
 
-    public final function calculateAmount(\CBGeo\Money $amount)
+    public final function calculateAmount(\GeorgiaNationalBank\Money $amount)
     {
         echo $this->getCrossRate($amount->fromCurrency, $amount->toCurrency)."\n";
         $amount->generatedAmount = $amount->amount * $this->getCrossRate($amount->fromCurrency, $amount->toCurrency);

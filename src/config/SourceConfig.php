@@ -1,5 +1,5 @@
 <?php
-namespace CBGeo\config;
+namespace GeorgiaNationalBank\config;
 /**
  * ძირითადი საკონფიგურაციო პარამეტრები
  *

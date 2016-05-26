@@ -1,5 +1,5 @@
 <?php
-namespace CBGeo;
+namespace GeorgiaNationalBank;
 /**
  * შესაძლო ვალუტების სია
  *

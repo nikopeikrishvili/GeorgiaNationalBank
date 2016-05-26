@@ -1,5 +1,5 @@
 <?php
-namespace CBGeo\sources;
+namespace GeorgiaNationalBank\sources;
 
 /**
  * Description of SoapSource
@@ -19,8 +19,8 @@ class SoapSource extends BaseSource
         $this->source = new \SoapClient(self::soapSource, array("trace" => 1, "connection_timeout" => 5, "exception" => 1, array('encoding' => 'UTF-8')));
         ini_set('default_socket_timeout', $timeout);
         // შემოწმება, WSDL შეიძლება მოდიოდეს სწორედ მარა თვითონ სერვისი არ მუშაობდეს
-        $rate = $this->source->GetCurrencyRate(\CBGeo\Currencies::_USD);
-        $this->data[\CBGeo\Currencies::_USD] = $rate;
+        $rate = $this->source->GetCurrencyRate(\GeorgiaNationalBank\Currencies::_USD);
+        $this->data[\GeorgiaNationalBank\Currencies::_USD] = $rate;
     }
 
     public function getRate($currency)
