@@ -40,7 +40,7 @@ class GeorgiaNationalBank
         }
     }
 
-    private function checkClass($className)
+    private static function checkClass($className)
     {
         if (!class_exists($className))
         {
