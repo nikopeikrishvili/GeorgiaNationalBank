@@ -6,24 +6,28 @@
 1. SOAP ვებ სერივის გამოყენებით <br />
 2. RSS ის გამოყენებით <br />
 
+## Install
+```
+composer require georgianationalbank/georgianationalbank
+```
 ***
 ## გამოყენება
 ```PHP
 // მონაცემთა წყაროს მიღება ან იქნება SourceInterface ინსტანსი ან Exception
-$data = NBRate::getDataSource();
+$data = \GeorgiaNationalBank\NBRate::getDataSource();
 
 // დოლარის კურსის მიღება ლართან მიმართებაში
-$rate = $data->getRate(Currencies::_USD);
+$rate = $data->getRate(\GeorgiaNationalBank\Currencies::_USD);
 echo $rate."\n";
 
 // დოლარის კურსის მიღება რუბლთან მიმართებაში
-$crossRate = $data->getCrossRate(Currencies::_RUB, Currencies::_USD);
+$crossRate = $data->getCrossRate(\GeorgiaNationalBank\Currencies::_RUB, \GeorgiaNationalBank\Currencies::_USD);
 echo $crossRate."\n";
 
 // თანხის დათვლა რამდენი დოლარი იქნება 1 ლარი
-$money = new Money();
+$money = new \GeorgiaNationalBank\Money();
 $money->fromCurrency = Currencies::_GEL;
-$money->toCurrency = Currencies::_USD;
+$money->toCurrency = \GeorgiaNationalBank\Currencies::_USD;
 $money->amount = 1;
 
 // დაბრუნდება ისევ Money ობიექტი ოღონდ generatedAmount ში იქნება მნიშვნელობა
