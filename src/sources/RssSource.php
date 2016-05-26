@@ -7,34 +7,44 @@ namespace GeorgiaNationalBank\sources;
  */
 class RssSource extends BaseSource
 {
+    const source = 'http://www.nbg.ge/rss.php';
 
+    private $content;
+    private $cleaned;
     public function __construct()
+    {
+        $this->content = file_get_contents(self::source);
+        $this->clean();
+        $this->parse();
+        
+    }
+    private function clean()
     {
         $garbage = array('<![CDATA[', ']]>', '<img  src="https://www.nbg.gov.ge/images/green.gif">', '<img  src="https://www.nbg.gov.ge/images/red.gif">');
         $correct = array_fill(0, count($garbage) - 1, '');
-        $content = str_replace($garbage, $correct, file_get_contents(self::rssSource));
-        $xml = simplexml_load_string($content);
-        $data = $xml->xpath('channel/item/description/table/tr');
-        $rates = array();
-        foreach ($data as $item)
-        {
-            $i = (array) $item->td;
-            $rates[$i[self::currencyId]] = $i[self::CurrencyRate];
-        }
-        $rates[\GeorgiaNationalBank\Currencies::_GEL]=1;
-        $this->data = $rates;
+        $this->cleaned = str_replace($garbage, $correct,$this->content);
     }
-
+    private function parse()
+    {
+        $xml = simplexml_load_string($this->cleaned);
+        $data = $xml->xpath('channel/item/description/table/tr');       
+        foreach ($data as $item)
+        {            
+            $i = (array) $item->td;
+            $this->addToLocal($i['0'],  $i['2']);            
+        }
+        $this->addToLocal(\GeorgiaNationalBank\Currencies::_GEL, 1.0);        
+    }
     
 
     public function getRate($currency)
     {
-        if (is_array($this->data) && key_exists($currency, $this->data))
+        if ($this->isInlocal($currency))
         {
-            return $this->data[$currency];
+            return $this->getFromLocal($currency);
         } else
         {
-            throw new Exception("cannot get rates from Rss", '-1', null);
+            throw new \Exception("cannot get rates from Rss", '-1', null);
         }
     }
 

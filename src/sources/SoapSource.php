@@ -1,4 +1,5 @@
 <?php
+
 namespace GeorgiaNationalBank\sources;
 
 /**
@@ -9,32 +10,29 @@ namespace GeorgiaNationalBank\sources;
 class SoapSource extends BaseSource
 {
 
-
-
+    const source = 'http://nbg.gov.ge/currency.wsdl';
+    private $source;
     public function __construct()
     {
 
         $timeout = ini_get('default_socket_timeout');
         ini_set('default_socket_timeout', 5);
-        $this->source = new \SoapClient(self::soapSource, array("trace" => 1, "connection_timeout" => 5, "exception" => 1, array('encoding' => 'UTF-8')));
+        $this->source = new \SoapClient(self::source, array("trace" => 1, "connection_timeout" => 5, "exception" => 1, array('encoding' => 'UTF-8')));
         ini_set('default_socket_timeout', $timeout);
-        // შემოწმება, WSDL შეიძლება მოდიოდეს სწორედ მარა თვითონ სერვისი არ მუშაობდეს
-        $rate = $this->source->GetCurrencyRate(\GeorgiaNationalBank\Currencies::_USD);
-        $this->data[\GeorgiaNationalBank\Currencies::_USD] = $rate;
     }
 
     public function getRate($currency)
     {
-        if (is_array($this->data) && key_exists($currency, $this->data))
+        
+        if ($this->isInlocal($currency))
         {
-            return $this->data[$currency];
+            return $this->getFromLocal($currency);
         } else
         {
             $rate = floatval($this->source->getCurrency($currency));
-            $this->data[$currency] = $rate;
+            $this->addToLocal($currency, $rate);
             return $rate;
         }
     }
-
 
 }

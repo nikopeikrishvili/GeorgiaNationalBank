@@ -8,7 +8,7 @@ namespace GeorgiaNationalBank\config;
  *
  * @author Niko Peikrishvili
  */
-abstract class Sources
+final class Sources
 {
 
     const SOAP = '\GeorgiaNationalBank\sources\SoapSource';
