@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/nikopeikrishvili/GeorgiaNationalBank.svg?branch=master)](https://travis-ci.org/nikopeikrishvili/GeorgiaNationalBank)
 ![alt tag](https://media.licdn.com/media/p/1/000/211/335/1f72ee7.png)
 # NBG Rates
 ეროვნული ბანკიდან კურსების ბიბლიოთეკა, ამჟამად აქვს 2 წყარო <br />
