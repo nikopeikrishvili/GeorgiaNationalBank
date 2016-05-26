@@ -14,7 +14,7 @@ composer require georgianationalbank/georgianationalbank
 ## გამოყენება
 ```PHP
 // მონაცემთა წყაროს მიღება ან იქნება SourceInterface ინსტანსი ან Exception
-$data = \GeorgiaNationalBank\NBRate::getDataSource();
+$data = \GeorgiaNationalBank\GeorgiaNationalBank::getDataSource();
 
 // დოლარის კურსის მიღება ლართან მიმართებაში
 $rate = $data->getRate(\GeorgiaNationalBank\Currencies::_USD);
