@@ -1,10 +1,11 @@
 {
-    "name": "GeorgiaNationalBank/GeorgiaNationalBank",
+    "name": "georgianationalbank/georgianationalbank",
     "type": "library",
     "description": "PHP Wrapper with 2 data sources of Goergian National Bank rates ",
     "keywords": ["Rates", "National Bank"],
     "homepage": "https://github.com/nikopeikrishvili/GeorgiaNationalBank",
     "license": "MIT",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Niko Peikrishvili",
