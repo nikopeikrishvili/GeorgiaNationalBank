@@ -1,5 +1,5 @@
 {
-    "name": "georgianationalbank/georgianationalbank",
+    "name": "nikopeikrishvili/georgianationalbank",
     "type": "library",
     "description": "PHP Wrapper with 2 data sources of Goergian National Bank rates ",
     "keywords": ["Rates", "National Bank"],
